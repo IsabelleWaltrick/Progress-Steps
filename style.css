@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* with this code anytime we add a border to an element it won't affcts its width */
+
+:root {
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    /* set elements side-by-side */
+    display: flex;
+    /* set vertical direction for the elements */
+    flex-direction: column;
+    /* center elements */
+    align-items: center;
+    /* both 2 lines set elements to the middle of the view point of the page */
+    justify-content: center;
+    height: 100vh;
+    /* eliminates scrollbars */
+    overflow: hidden;
+    margin: 0;
+
+    background-color: #f6f7fb;
+}
+
+.container {
+    text-align: center;
+    /* background-color: rgba(64, 133, 133, 0.486); */
+}
+
+.progress-container {
+    /* background-color: tomato;  */
+    /* this will put the numbers next to each-other */
+    display: flex;
+    /* This will make the numbers evenly spaced out */
+     justify-content: space-between; 
+    position: relative;
+    /* space in between the buttons and the numbers */
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+    /* align-items: center; */
+}
+
+.progress-container::before {
+    /* the "content" with an umpty is string is to make the line visible*/
+    content: '';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    /* middle */
+    top: 50%;
+    left: 0;
+    height: 4px;
+    /* this is 100% becaue represent the empty line */
+    width: 100%;
+    /* to put the line in the middle of the numbers */
+    transform: translateY(-50%);
+    /* to put the line behind the numbers */
+    z-index: -1;
+}
+
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    /* middle */
+    top: 50%;
+    left: 0;
+    height: 4px;
+    /* starting point of the line should be 0 */
+    width: 0%;
+    /* to put the line in the middle of the numbers */
+    transform: translateY(-50%);
+    /* to put the line behind the numbers */
+    z-index: -1;
+    /* line effect */
+    transition: 0.4s ease;
+}
+
+.circle {
+    background-color: white;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.4s ease;
+}
+
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+
+.btn {
+    background-color: var(--line-border-fill);
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active {
+    /* effect that makes the button move a bit whne clicked */
+    transform: scale(0.98);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    /* te */
+    cursor: default;
+}
